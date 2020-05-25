@@ -1,0 +1,12 @@
+<div>
+  <h2>Redirecting to Paytm </h2><br/>
+  <h1>Please do not refresh this page...</h1>
+</div>
+<form method="post" action=<%=Rails.application.secrets[:transaction_url]%> name="f1">
+  <% keys = @paytmParam.keys %>
+  <% keys.each do |k| %>
+    <input type="hidden" name="<%= k %>" value="<%= @paytmParam[k] %>">
+  <% end %>
+  <input type="hidden" name="CHECKSUMHASH" value="<%= @checksum %>">
+</form>
+<script type="text/javascript">document.f1.submit();</script>
